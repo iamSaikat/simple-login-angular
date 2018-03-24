@@ -1,0 +1,45 @@
+<div class="container">
+  <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+    <div class="row justify-content-center">
+      <div class="col-md-4 text-center">
+        <img src="assets/imgs/logo.png">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <label for="username">Username</label>
+          <div class="input-group">
+            <input type="text" name="username" class="form-control" formControlName="username" placeholder="username">
+          </div>
+        </div>
+        <span class="text-danger" *ngIf="!loginForm.controls['username'].valid 
+        && loginForm.controls['username'].touched">
+            Username Required
+        </span>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-group">
+            <input type="password" name="password" class="form-control" formControlName="password" placeholder="Password" required>
+          </div>
+        </div>
+        <span class="text-danger align-middle"  *ngIf="!loginForm.controls['password'].valid 
+        && loginForm.controls['password'].touched">
+            Password Required
+        </span>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">
+          Login
+        </button>
+        <a class="btn btn-link" (click)="gotoForget()">Forgot Your Password?</a>
+      </div>
+    </div>
+  </form>
+</div>
